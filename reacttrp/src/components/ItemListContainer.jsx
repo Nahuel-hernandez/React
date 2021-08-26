@@ -1,19 +1,12 @@
 import React from 'react'
+import ItemList from './ItemList'
 
-let styles = {
-    textDecoration : "underline",
-    color : "#FC0000",
-    fontFamily:"Courier"
-}
-
-
-function ItemListContainer() {
-    const greetins =<h1 style={styles}>Este texto luego sera un catalogo, o tal vez no :O</h1> 
+function ItemListContainer() { 
 
     return (
 
         <div>
-        {greetins}   
+        <ItemList /> 
         </div>
 
     )

@@ -1,7 +1,7 @@
-import React from 'react'
+/*import React from 'react'
 import Item from './Item'
 
-<Item />
+
 
 let styles= {
 
@@ -31,3 +31,4 @@ function ItemList({Item}) {
 }
 
 export default ItemList
+*/

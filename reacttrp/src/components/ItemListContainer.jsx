@@ -1,12 +1,12 @@
 import React from 'react'
-import ItemList from './ItemList'
+import Item from './Item'
 
 function ItemListContainer() { 
 
     return (
 
         <div>
-        <ItemList /> 
+        <Item /> 
         </div>
 
     )

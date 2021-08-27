@@ -22,30 +22,35 @@ function getJuegos(id) {  //futuro buscador?
 
     if (id===undefined){
         return juegos;
-    }
+    }       
     else{
         return juegos.find(juegos=> juegos.id ===id)
     }
-
 }
 
+let tarea = new Promise((resolve) => {
+    setTimeout(() => {
+        resolve(getJuegos());        
+    }, 2000);
+});
 
 function Item() {
-    
-    let tarea = new Promise((resolve) => {
-        setTimeout(() => {
-            resolve(getJuegos());        
-        }, 2000);
-    });
-
-    let [juego, setEstado] = useState(juegos)
+    let [estado, setEstado] = useState({juegos})
+    useEffect(() => {
+        tarea
+        .then((resp)=> console.log(resp) )     //guardar en el estado
+    }, [resp])
     return (
+        setEstado(estado=resp),
+
+        <div className="App" >
         
-        useEffect(() => {
-            tarea
-            .then((juego) => setEstado({juego})  )     //guardar en el estado
-        }, [])
-    );
+                <div className="card-header">
+                    {estado.nombre}
+                </div>
+                
+                </div>
+)
 }
 
 export default Item

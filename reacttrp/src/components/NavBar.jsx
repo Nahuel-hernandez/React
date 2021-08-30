@@ -17,7 +17,7 @@ function NavBar() {
     
       <ul className="navbar-nav me-auto mb-3 mb-lg-0">
         <li className="nav-item">
-          <a className="nav-link active" aria-current="page" href="#">Inicio</a>
+          <a className="nav-link active" aria-current="page" href="">Inicio</a>
         </li>
         <li className="nav-item">
           <a className="nav-link" href="#">Opcion1</a>

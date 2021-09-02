@@ -1,6 +1,8 @@
 import React from 'react'
 import CartWidget from './CartWidget'
 import logo from './Media/logo.png'
+import { Link } from 'react-router-dom'
+
 
 let styles = {
     width: 120,
@@ -17,16 +19,19 @@ function NavBar() {
     
       <ul className="navbar-nav me-auto mb-3 mb-lg-0">
         <li className="nav-item">
-          <a className="nav-link active" aria-current="page" href="">Inicio</a>
+          <Link to={'/'} className="nav-link active" aria-current="page" >Inicio</Link>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">Opcion1</a>
+          <Link to={"/genero/terror"} className="nav-link" >Terror</Link>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">Opcion2</a>
+          <Link to={"/genero/accion"} className="nav-link" >Acción</Link>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">Opcion3</a>
+          <Link to={"/genero/aventura"} className="nav-link" >Aventura</Link>
+        </li>
+        <li className="nav-item">
+          <Link to={"/genero/simulacion"} className="nav-link" >Simulación</Link>
         </li>
       </ul>
       <form className="d-flex" />

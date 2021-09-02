@@ -1,13 +1,13 @@
 
 import React from 'react'
-import ItemCount from './ItemCount'
-
+import { Link } from 'react-router-dom'
 
 function Item({item}) {
     return (
     
-<div className="app" >
+<Link to={"/detalle"}>
 
+<div className="app" >
     <div key={item.id} className="card border-danger">
         <div className="card-body text-danger ">
         <img src={item.urlImg} alt="Imagen del juego" width="600" height="400"/>
@@ -15,12 +15,11 @@ function Item({item}) {
             </div>       
             <div>
                 <div className="card-text text-danger">Precio: {item.precio} AR$</div> <br />
-                <div className="card-text text-danger">Genero: {item.genero}</div> 
                 </div>
-                <ItemCount />
                 </div>
                 
     </div>
+    </Link>
     )
 }
 

@@ -3,6 +3,8 @@ import ItemCount from './ItemCount'
 
 function ItemDetail({item}) {
     return (
+
+        
         <div className="app" >
 
     <div key={item.id} className="card border-danger">

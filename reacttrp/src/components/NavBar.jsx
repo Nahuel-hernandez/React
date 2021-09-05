@@ -31,7 +31,7 @@ function NavBar() {
           <Link to={"/genero/aventura"} className="nav-link" >Aventura</Link>
         </li>
         <li className="nav-item">
-          <Link to={"/genero/simulacion"} className="nav-link" >Simulación</Link>
+          <Link to={"/genero/simulador"} className="nav-link" >Simulación</Link>
         </li>
       </ul>
       <form className="d-flex" />

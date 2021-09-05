@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 function Item({item}) {
     return (
     
-<Link to={"/detalle"}>
+<Link to={`/detalle/?id=${item.id}`}>
 
 <div className="app" >
     <div key={item.id} className="card border-danger">

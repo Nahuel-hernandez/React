@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import ItemDetail from './ItemDetail';
+import { useParams } from 'react-router-dom'
 
 const juegos =[
     {nombre:"Silent Hill",precio:100,genero:"terror",id:1,urlImg:"https://www.egames.news/__export/1624138472203/sites/debate/img/2021/06/19/silent_hill_-_01.jpg_423682103.jpg"},
@@ -20,30 +21,38 @@ const juegos =[
     {nombre:"Dead Space",precio:150,genero:"terror",id:15,urlImg:"https://media.vandal.net/i/1200x630/7-2021/202172220103598_1.jpg"}];
 
     
-
+/*
 function getJuegos(id) {
     if (id===undefined) {
         return juegos
     }else{
         return juegos.find( juego=> juego.id === id)
-}};
+}};*/
 
 
 let tarea = new Promise((resolve ) => { 
     setTimeout(() => {
-        resolve(getJuegos(4));  
+        resolve(juegos);  
     }, 2000);
 });
-
 
 function ItemDetailContainer() {
 
     let [estado, setEstado] = useState({})
 
+    const { id } = useParams()
+
     useEffect(() => {
-        tarea.then((resp)=> setEstado(resp))
-        },[]) 
-    
+
+        if(id===undefined){
+            tarea
+            .then((resp)=> setEstado(resp) )    
+        }else{
+            tarea
+            .then((resp)=> setEstado(resp.find( r => id===r.id)) ) 
+        }
+    }, [id]) 
+
     return (
         <div>
             <ItemDetail item={estado} />

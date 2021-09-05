@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import ItemDetail from './ItemDetail';
-import { useParams } from 'react-router-dom'
+
 
 const juegos =[
     {nombre:"Silent Hill",precio:100,genero:"terror",id:1,urlImg:"https://www.egames.news/__export/1624138472203/sites/debate/img/2021/06/19/silent_hill_-_01.jpg_423682103.jpg"},
@@ -20,42 +20,34 @@ const juegos =[
     {nombre:"Alien Isolation",precio:300,genero:"terror",id:14,urlImg:"https://i.blogs.es/ab2d76/060814-alien-isolation-tlqns/1366_2000.jpg"},
     {nombre:"Dead Space",precio:150,genero:"terror",id:15,urlImg:"https://media.vandal.net/i/1200x630/7-2021/202172220103598_1.jpg"}];
 
-    
-/*
-function getJuegos(id) {
-    if (id===undefined) {
-        return juegos
-    }else{
-        return juegos.find( juego=> juego.id === id)
-}};*/
 
-
-let tarea = new Promise((resolve ) => { 
-    setTimeout(() => {
-        resolve(juegos);  
-    }, 2000);
-});
-
-function ItemDetailContainer() {
+const ItemDetailContainer = (props) => {
 
     let [estado, setEstado] = useState({})
 
-    const { id } = useParams()
+    const id = props.match.params.id;
 
-    useEffect(() => {
-
-        if(id===undefined){
-            tarea
-            .then((resp)=> setEstado(resp) )    
-        }else{
-            tarea
-            .then((resp)=> setEstado(resp.find( r => id===r.id)) ) 
+    const tarea = new Promise ((resolve,reject)=>{
+        const encontrado = juegos.find((item) => item.id === parseInt (id))
+        if (encontrado) {
+            resolve (encontrado)
         }
-    }, [id]) 
+        else{
+            reject('Juego no encontrado');
+        };
+    });
+    useEffect(() => {
+        setTimeout(() => {
+            tarea
+            .then((resp)=> setEstado(resp) )   
+        }, 1300); 
+        },[]) 
 
     return (
         <div>
+            {estado.id &&
             <ItemDetail item={estado} />
+        }
             </div>
     )
 }

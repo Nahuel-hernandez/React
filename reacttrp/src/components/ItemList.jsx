@@ -5,7 +5,7 @@ function ItemList({items}) {
     return (
         <>
             <ul>
-                { items.map((item)=>  <Item item={item} />  )  }
+                { items.map((item)=>  <Item key={item.nombre} item={item} />  )  }
             </ul>   
         </>
     )

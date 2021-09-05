@@ -1,5 +1,6 @@
 import React from 'react'
 import ItemCount from './ItemCount'
+import { Link } from 'react-router-dom'
 
 function ItemDetail({item}) {
     return (
@@ -16,7 +17,8 @@ function ItemDetail({item}) {
                 <div className="card-text text-danger">Precio: {item.precio} AR$</div> <br />
                 <div className="card-text text-danger">Genero: {item.genero}</div> 
                 </div>
-                <ItemCount />
+                <ItemCount /><br /><br />
+                <Link exact path to={'/'}> <button className="btn btn-outline-danger">Volver al inicio</button></Link>
                 </div>
                 
     </div>

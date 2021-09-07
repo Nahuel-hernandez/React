@@ -1,5 +1,7 @@
-
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+
+
 
 let styles = {
     fontSize:30,
@@ -7,17 +9,29 @@ let styles = {
     width:50,
     height: 50
 }
-
 let stylesDos={
     fontSize:30,
     backgroundColor:"transparent"
 }
 
+const ButtonAddToCart = () => {
+    return <button style={stylesDos}>Agregar al carrito</button>
+}
 
-function ItemCount () {
-    let stock = 11;    
+const ButtonViewCart = () => {
+    return (
+    <Link exact path to={'/Cart'}> <button style={stylesDos}>Terminar compra</button></Link>
+    )
+}
+
+const ItemCount = (props) => {
+
+    let stock = 11;
+    const [bAdd , setbAdd] = useState ('botcount')
 
     const [cantidad , setCambio] = useState(1);
+
+
 
     const Sumar = () => {
         if (cantidad<stock){
@@ -28,7 +42,7 @@ function ItemCount () {
 };
 
     const Restar = () => {
-        if (cantidad===1){
+        if (cantidad===1 ){
             return false;
         }
         else{
@@ -36,20 +50,25 @@ function ItemCount () {
     }   
     };
 
-    const Mostrar = () => {
-        console.log("usted ha agregado",{cantidad},"de productos");
-
+    const handleClick =()=>{
+        setbAdd('botadd')
+        props.onAdd(cantidad)
     }
 
     return (
-        <div >
-        <button onClick={Restar} style={styles}> - </button>
-        <label style={styles}>{cantidad}</label>
-        <button onClick={Sumar} style={styles}> + </button>
+        <div>
+        {bAdd ==='botcount' ? ( <button onClick={Restar} style={styles}> - </button> ) : <div/>} 
+        {bAdd ==='botcount' ? ( <label style={styles}>{cantidad}</label> ) : <div/>} 
+        {bAdd ==='botcount' ? ( <button onClick={Sumar} style={styles}> + </button> ) : <div/>} 
         <br /><br />
-        <button onClick={Mostrar} style={stylesDos}>Agregar al carrito</button>
+        <div onClick={handleClick}>
+        {bAdd ==='botcount' ? (<ButtonAddToCart /> ) : <ButtonViewCart />}
+        </div><br />
         </div>
     )
 };
 
 export default  ItemCount
+
+
+

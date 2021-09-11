@@ -5,18 +5,16 @@ import { useCartContext } from '../context/cartContext'
 
 function ItemDetail({item}) {
     
-   const [contador , setContador] = useState ()
+    const [contador , setContador] = useState (Number)
 
-    const  {producto} = item
-console.log(item)
+    const producto  = item
 
     const {agregarAlCarrito} = useCartContext ()
 
     function onAdd(cant) {
        setContador(cant) 
-    console.log(cant)
-    console.log("la cantidad es",contador)
-    agregarAlCarrito(producto)
+    agregarAlCarrito(producto , contador)
+    console.log("que",item)
 }
 
     return (    

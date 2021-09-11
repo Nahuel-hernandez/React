@@ -27,11 +27,10 @@ const ButtonViewCart = () => {
 const ItemCount = (props) => {
 
     let stock = 11;
+
     const [bAdd , setbAdd] = useState ('botcount')
 
     const [cantidad , setCambio] = useState(1);
-
-
 
     const Sumar = () => {
         if (cantidad<stock){

@@ -37,7 +37,7 @@ const ItemCount = ({initial, onAdd}) => {
 
     const handleClick=()=>{
         onAdd(count)
-        setCount(initial-1)
+        setCount(initial)
         setbAdd('botadd')
     }
 
@@ -47,8 +47,8 @@ const ItemCount = ({initial, onAdd}) => {
         {bAdd ==='botcount' ? ( <label style={styles}>{count}</label> ) : <div/>} 
         {bAdd ==='botcount' ? ( <button onClick={handlerAdd} style={styles}> + </button> ) : <div/>} 
         <br /><br />
-        <div onClick={handleClick}>
-        {bAdd ==='botcount' ? (<ButtonAddToCart /> ) : <ButtonViewCart />}
+        <div>
+        {bAdd ==='botcount' ? (<div onClick={handleClick}><ButtonAddToCart /></div> ) : <ButtonViewCart />}
         </div><br />
         </div>          
     )

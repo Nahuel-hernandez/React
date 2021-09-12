@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import {useState} from 'react'
 import { Link } from 'react-router-dom';
-
 
 
 let styles = {
@@ -24,50 +23,36 @@ const ButtonViewCart = () => {
     )
 }
 
-const ItemCount = (props) => {
-
-    let stock = 11;
+const ItemCount = ({initial, onAdd}) => {
+    const [count, setCount] = useState(initial)
 
     const [bAdd , setbAdd] = useState ('botcount')
-
-    const [cantidad , setCambio] = useState(1);
-
-    const Sumar = () => {
-        if (cantidad<stock){
-        setCambio(cantidad + 1);
-    }else{
-        return false;
+    const handlerAdd =()=>{
+        setCount(count +1)        
     }
-};
 
-    const Restar = () => {
-        if (cantidad===1 ){
-            return false;
-        }
-        else{
-        setCambio(cantidad - 1);
+    const handlerRm =()=>{
+        if(count > initial) setCount(count - 1)
     }   
-    };
 
-    const handleClick =()=>{
+    const handleClick=()=>{
+        onAdd(count)
+        setCount(initial-1)
         setbAdd('botadd')
-        props.onAdd(cantidad)
     }
 
     return (
         <div>
-        {bAdd ==='botcount' ? ( <button onClick={Restar} style={styles}> - </button> ) : <div/>} 
-        {bAdd ==='botcount' ? ( <label style={styles}>{cantidad}</label> ) : <div/>} 
-        {bAdd ==='botcount' ? ( <button onClick={Sumar} style={styles}> + </button> ) : <div/>} 
+        {bAdd ==='botcount' ? ( <button onClick={handlerRm} style={styles}> - </button> ) : <div/>} 
+        {bAdd ==='botcount' ? ( <label style={styles}>{count}</label> ) : <div/>} 
+        {bAdd ==='botcount' ? ( <button onClick={handlerAdd} style={styles}> + </button> ) : <div/>} 
         <br /><br />
         <div onClick={handleClick}>
         {bAdd ==='botcount' ? (<ButtonAddToCart /> ) : <ButtonViewCart />}
         </div><br />
-        </div>
+        </div>          
     )
-};
-
-export default  ItemCount
+}
 
 
-
+export default ItemCount

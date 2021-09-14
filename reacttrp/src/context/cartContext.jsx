@@ -1,5 +1,6 @@
 import { useContext, createContext ,  useState} from 'react'
 
+
 const CartContext = createContext()
 
 export const  useCartContext = () => useContext(CartContext) 
@@ -29,16 +30,20 @@ const isInCart = (id) => {
     return producto.find(element => element.item.id === id)
 }
 
-
 const borrarCarrito =()=>{
     setProducto([])
 }
 
+const borrarJuego = (itemId) =>{
+    const filtro = producto.filter (element => element.item.id !== itemId)
+    return setProducto(filtro)
+
+}
 
     return (
         <CartContext.Provider value={{
             producto,
-            agregarAlCarrito,borrarCarrito
+            agregarAlCarrito,borrarCarrito,borrarJuego
 
         }}>
 

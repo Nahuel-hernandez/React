@@ -2,7 +2,7 @@
 import ItemList from './ItemList'
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-
+import Pacman from './Pacman'
 
     const juegos =[
     {nombre:"Silent Hill",precio:100,genero:"terror",id:1,urlImg:"https://www.egames.news/__export/1624138472203/sites/debate/img/2021/06/19/silent_hill_-_01.jpg_423682103.jpg"},
@@ -35,19 +35,21 @@ let tarea = new Promise((resolve ) => {
 
 function ItemListContainer() {
 
+    let [loading, setloading] = useState(true)
     const [estado, setItems] = useState([])
 
     const { gener } = useParams()
 
     useEffect(() => {
-
+        setTimeout(() => {
         if(gener===undefined){
             tarea
-            .then((resp)=> setItems(resp) )    
+            .then((resp)=> setItems(resp), setloading(false) )    
         }else{
             tarea
-            .then((resp)=> setItems(resp.filter( r => gener===r.genero)) ) 
+            .then((resp)=> setItems(resp.filter( r => gener===r.genero)),setloading(false) ) 
         }
+    }, 2000);
     }, [gener]) 
 
 
@@ -56,8 +58,9 @@ function ItemListContainer() {
 
 
         return (
+
             <div>
-            <ItemList style={{styles}} items={estado} />        
+            {loading === true ? (<Pacman /> ) : ( <ItemList style={{styles}} items={estado} />) }
             </div>
         )
     }

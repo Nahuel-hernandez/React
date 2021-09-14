@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import ItemDetail from './ItemDetail';
-
+import Pacman from './Pacman'
 
 const juegos =[
     {nombre:"Silent Hill",precio:100,genero:"terror",id:1,urlImg:"https://www.egames.news/__export/1624138472203/sites/debate/img/2021/06/19/silent_hill_-_01.jpg_423682103.jpg"},
@@ -24,6 +24,9 @@ const juegos =[
 const ItemDetailContainer = (props) => {
 
     let [estado, setEstado] = useState({})
+    let [loading, setloading] = useState(true)
+
+
 
     const id = props.match.params.id;
 
@@ -39,16 +42,14 @@ const ItemDetailContainer = (props) => {
     useEffect(() => {
         setTimeout(() => {
             tarea
-            .then((resp)=> setEstado(resp) )   
+            .then((resp)=> setEstado(resp) , setloading(false) )   
         }, 1300); 
         },[]) 
 
     return (
         <div>
-            {estado.id &&
-            <ItemDetail item={estado} />
-        }
-            </div>
+    {loading === true ? (<Pacman /> ) : ( estado.id && <ItemDetail item={estado} />) }
+    </div>
     )
 }
 

@@ -31,8 +31,21 @@ function ItemListContainer() {
                 else{
                     const db = getFirestore()
                     const queryDb = db.collection('Juegos').doc().get()
-                    .then((resp)=> setItems(resp.docs.filter( r => gener===r.genero)),setloading(false) )
+                    .then((resp)=> setItems(resp.docs.filter( item => gener===item.data(genero))),setloading(false))
                 }
+
+               /* else{
+                    const db = getFirestore()
+                    const queryDb = db.collection('Juegos').doc(gener).get()
+                    .then((resp)=> setItems(resp.docs.filter( item => gener===item.genero)),setloading(false))
+                }*/
+
+                /* else{
+                    const db = getFirestore()
+                    const queryDb = db.collection('Juegos').doc("genero").get()
+                    .then((resp)=> setItems(resp.docs.filter( item => gener===item.genero)),setloading(false))
+                }*/
+
 
             },[gener]
         ) 

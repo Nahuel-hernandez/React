@@ -26,27 +26,17 @@ function ItemListContainer() {
                 console.log(queryDb)
                 setloading(false)
             setItems(resp.docs.map(item=> ({id: item.id, ...item.data()})))
-            setloading(false)})}
-
-                else{
-                    const db = getFirestore()
-                    const queryDb = db.collection('Juegos').doc().get()
-                    .then((resp)=> setItems(resp.docs.filter( item => gener===item.data(genero))),setloading(false))
-                }
-
-               /* else{
-                    const db = getFirestore()
-                    const queryDb = db.collection('Juegos').doc(gener).get()
-                    .then((resp)=> setItems(resp.docs.filter( item => gener===item.genero)),setloading(false))
-                }*/
-
-                /* else{
-                    const db = getFirestore()
-                    const queryDb = db.collection('Juegos').doc("genero").get()
-                    .then((resp)=> setItems(resp.docs.filter( item => gener===item.genero)),setloading(false))
-                }*/
-
-
+            setloading(false)})
+        }else{
+            const db = getFirestore()
+            const queryDb = db.collection('Juegos').where('genero','==',gener).get()
+            .then((resp)=> { 
+                
+                console.log(queryDb)
+                setItems(resp.docs.map(item=> ({id: item.id, ...item.data()})))
+            setloading(false)})
+           
+        }
             },[gener]
         ) 
 

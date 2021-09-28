@@ -12,7 +12,7 @@ function CartWidget() {
     return ( <div>
         {producto.length === 0 ? (<div ></div>) : (<div>
         {producto.map((item)=> 
-        <div className="ocultar">{total=total+item.quantity}</div>)} <label>{total}</label><Link exact path to={'/Cart'}>  <img src={carrito} alt="Logo carrito"  /></Link></div>)}
+        <div key={item.item.id} className="ocultar">{total=total+item.quantity}</div>)} <label>{total}</label><Link exact path to={'/Cart'}>  <img src={carrito} alt="Logo carrito"  /></Link></div>)}
         </div>
     )
 }

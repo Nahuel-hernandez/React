@@ -32,7 +32,7 @@ function PreCart() {
 
     function Validar(e){
         e.preventDefault()
-        if ( (formData.nombre.length !==0) && (formData.tellength !==0) && (formData.email.length !==0) && (formData.reEmail===formData.email)){
+        if ( (formData.nombre.length !==0) && (formData.tel.length !==0) && (formData.email.length !==0) && (formData.reEmail===formData.email)){
             setvalidado("true")
         }
         else{
@@ -79,8 +79,8 @@ function PreCart() {
         <div >
             {producto.length ===0 ? ( <div><h1 className="text-danger">El carrito esta vacio</h1><br/>  <Link exact path to={'/'}> <button className="btn btn-outline-danger" >Seguir comprando</button></Link> </div> ) : (<div>
             {producto.map((item)=> 
-            <div className="app" >
-            <div key={item.item.id} className="card border-danger" style={styles2}>
+            <div key={item.item.id} className="app" >
+            <div className="card border-danger" style={styles2}>
             <div className="card-body text-danger ">
             <img src={item.item.urlImg} alt="Imagen del juego" width="600" height="400"/>
             <div className="card-title "> {item.item.nombre} </div>

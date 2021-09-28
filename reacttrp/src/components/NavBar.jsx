@@ -9,40 +9,36 @@ let styles = {
     height: 100
 }
 
-function NavBar() {
-    return (
 
-        <div>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <img src={logo} alt="Logo Ecomerce" style={styles}  />
-  <div className="container-fluid" >
-    
+function NavBar() {
+return (
+
+  <div>
+      <nav id="nav" className="navbar navbar-expand-lg navbar-light bg-light">
+      <img src={logo} alt="Logo Ecomerce" style={styles}  />
+      <div className="container-fluid" >
       <ul className="navbar-nav me-auto mb-3 mb-lg-0">
-        <li className="nav-item">
-          <Link to={'/'} className="nav-link active" aria-current="page" >Inicio</Link>
+        <li className="nav-item active">
+          <Link to={'/'} className="nav-link text-danger active" aria-current="page" >Inicio</Link>
         </li>
         <li className="nav-item">
-          <Link to={"/genero/terror"} className="nav-link" >Terror</Link>
+          <Link to={"/genero/terror"} className="nav-link text-danger" >Terror</Link>
         </li>
         <li className="nav-item">
-          <Link to={"/genero/accion"} className="nav-link" >Acción</Link>
+          <Link to={"/genero/accion"} className="nav-link text-danger" >Acción</Link>
         </li>
         <li className="nav-item">
-          <Link to={"/genero/aventura"} className="nav-link" >Aventura</Link>
+          <Link to={"/genero/aventura"} className="nav-link text-danger" >Aventura</Link>
         </li>
         <li className="nav-item">
-          <Link to={"/genero/simulador"} className="nav-link" >Simulación</Link>
+          <Link to={"/genero/simulador"} className="nav-link text-danger" >Simulación</Link>
         </li>
       </ul>
-      <form className="d-flex" />
-        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-        <button className="btn btn-outline-success" type="submit">Search</button>
-        </div>
-        <CartWidget />
-  </nav>
-
-        </div>
-    )
+      </div>
+      <CartWidget />
+      </nav>
+  </div>
+)
 }
 
 

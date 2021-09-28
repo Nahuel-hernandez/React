@@ -7,7 +7,7 @@ import { getFirestore } from '../service/getFirebase'
 const ItemDetailContainer = (props) => {
 
     let [estado, setEstado] = useState({})
-    let [loading, setloading] = useState(true)
+    let [cargando, setCargando] = useState(true)
 
 
 
@@ -19,16 +19,16 @@ const ItemDetailContainer = (props) => {
         .then (resp => {
             if (resp === 0){
                 console.log("Error de conexion con la base de datos",queryDb)
-                setloading(false)
+                setCargando(false)
             }
             setEstado({id: resp.id, ...resp.data()})
-            setloading(false)
+            setCargando(false)
         })
         },[id]) 
 
     return (
         <div>
-    {loading === true ? (<Pacman /> ) : ( estado.id && <ItemDetail item={estado} />) }
+    {cargando === true ? (<Pacman /> ) : ( estado.id && <ItemDetail item={estado} />) }
     </div>
     )
 }
